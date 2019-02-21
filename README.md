@@ -11,7 +11,7 @@ support:
 
 ```
 cd ~/.vim/bundle
-git clone git://github.com/bpolly/vttr.git
+git clone git://github.com/bpolly/vim-ttr.git
 ```
 
 ##### VimPlug
@@ -19,7 +19,7 @@ git clone git://github.com/bpolly/vttr.git
 Place this in your .vimrc:
 
 ```viml
-Plug 'bpolly/vttr'
+Plug 'bpolly/vim-ttr'
 ```
 
 Then run the following in Vim:
