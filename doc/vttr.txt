@@ -33,13 +33,13 @@ INSTALLATION                                           *vttr-installation*
 Pathogen:~
 >
   cd ~/.vim/bundle
-  git clone git://github.com/bpolly/vttr.git
+  git clone git://github.com/bpolly/vim-ttr.git
 <
 VimPlug:~
 
 Place this in your .vimrc:
 >
-    Plug 'bpolly/vttr'
+    Plug 'bpolly/vim-ttr'
 <
 Then run the following in Vim:
 >
