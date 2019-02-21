@@ -1,0 +1,60 @@
+*vttr.txt*              A Vim plugin which lets you run RSpec tests without
+interruption.
+
+
+                           VTTR (Vim Tmux Test Runner)
+
+
+Author:            Braden Polly 
+Plugin Homepage:   <https://github.com/bpolly/vttr>
+
+
+===============================================================================
+CONTENTS                                                            *vttr*
+
+  Introduction ................. |vttr-introduction|
+  Installation ................. |vttr-installation|
+  Commands ..................... |vttr-commands|
+
+===============================================================================
+INTRODUCTION                                           *vttr-introduction*
+
+VTTR is a Vim plugin that allows you to run the focused RSpec file in an
+adjacent Tmux pane. It's purpose is to avoid interruptions by kicking off the
+file without needing to navigate different panes.
+
+It also can differentiate between unit and feature specs and add tags
+accordingly.
+
+
+===============================================================================
+INSTALLATION                                           *vttr-installation*
+
+Pathogen:~
+>
+  cd ~/.vim/bundle
+  git clone git://github.com/bpolly/vttr.git
+<
+VimPlug:~
+
+Place this in your .vimrc:
+>
+    Plug 'bpolly/vttr'
+<
+Then run the following in Vim:
+>
+  :source %
+  :PlugInstall
+<
+
+===============================================================================
+COMMANDS                                                   *vttr-commands*
+
+Commands for using vttr:~
+
+                                                  *vttr-:RSpecFile*
+:RSpecFile              Run current RSpec file.
+
+                                                   *vttr-:RSpecLine*
+:RSpecLine              Run current RSpec file with focused line.
+
