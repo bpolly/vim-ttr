@@ -34,7 +34,7 @@ Then run the following in Vim:
 By default there are no keyboard mappings. Map them like so:
 
 ```
-noremap <C-m> :RSpecFile<CR>
-noremap <C-n> :RSpecLine<CR>
+noremap <Leader>f :RSpecFile<CR>
+noremap <Leader>l :RSpecLine<CR>
 ```
 
