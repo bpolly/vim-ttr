@@ -3,21 +3,23 @@ if exists("g:loaded_vttr") || v:version < 700
 endif
 let g:loaded_vttr = 1
 
+let g:clear_screen_before_test_run = get(g:, 'clear_screen_before_test_run', 0)
 "---------------------------------------------------------
 " RSpec Test Runner
 "---------------------------------------------------------
+function! ExitScrollMode()
+    call system("tmux send-keys -t .+ Escape Escape")
+endfunction
+
+function! ClearScreen()
+    call system("tmux send-keys -t .+ 'clear' Enter")
+endfunction
+
 function! CurrentProjectRoot()
   let localfilename = @% " spec/models/drug_spec.rb
   let fullfilename = expand('%:p') " /users/bpolly/dev/apps/hubservices/spec/models/drug_spec.rb
   let project_root_path = substitute(fullfilename, localfilename, "", "")
   return project_root_path
-endfunction
-
-function! RspecMe(use_line)
-  let dir = CurrentProjectRoot()
-  let system_call = "tmux send-keys -t .+ 'cd " . dir . " && bin/rspec " . TestFilename(a:use_line) . "' Enter"
-  call ExitCopyMode()
-  call system(system_call)
 endfunction
 
 function! TestFilename(use_line)
@@ -31,9 +33,14 @@ function! TestFilename(use_line)
     return s:filename
 endfunction
 
-function! ExitCopyMode()
-  call system("tmux send-keys -t .+ \003")
-  call system("tmux send-keys -t .+ 'clear' Enter")
+function! RspecMe(use_line)
+  let dir = CurrentProjectRoot()
+  let system_call = "tmux send-keys -t .+ 'cd " . dir . " && bin/rspec " . TestFilename(a:use_line) . "' Enter"
+  call ExitScrollMode()
+  if g:clear_screen_before_test_run
+      call ClearScreen()
+  endif
+  call system(system_call)
 endfunction
 
 command! -bar RSpecFile call RspecMe(0)

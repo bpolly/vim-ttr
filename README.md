@@ -31,10 +31,13 @@ Then run the following in Vim:
 
 ## Setup
 
-By default there are no keyboard mappings. Map them like so:
-
 ```
+" .vimrc
+
+" Set this variable to 1 to clear the terminal contents before each test run.
+let g:clear_screen_before_test_run = 1
+
+" By default there are no keyboard mappings. Map them like so:
 noremap <Leader>f :RSpecFile<CR>
 noremap <Leader>l :RSpecLine<CR>
 ```
-
