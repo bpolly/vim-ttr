@@ -15,7 +15,8 @@ endfunction
 
 function! RspecMe(use_line)
   let dir = CurrentProjectRoot()
-  let system_call = "tmux send-keys -t .+ 'cd " . dir . " && bin/rspec " . TestFilename(a:use_line) . "' Enter"
+  let system_call = "tmux send-keys -t .+ qBSpace 'cd " . dir . " && bin/rspec " . TestFilename(a:use_line) . "' Enter"
+  ExitCopyMode()
   call system(system_call)
 endfunction
 
@@ -28,6 +29,11 @@ function! TestFilename(use_line)
         let s:filename = s:filename . ' --tag type:feature'
     endif
     return s:filename
+endfunction
+
+function! ExitCopyMode()
+  call system("tmux send-keys -t .+ \003")
+  call system("tmux send-keys -t .+ 'clear' Enter")
 endfunction
 
 command! -bar RSpecFile call RspecMe(0)
