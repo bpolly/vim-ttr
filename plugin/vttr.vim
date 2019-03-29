@@ -15,8 +15,8 @@ endfunction
 
 function! RspecMe(use_line)
   let dir = CurrentProjectRoot()
-  let system_call = "tmux send-keys -t .+ qBSpace 'cd " . dir . " && bin/rspec " . TestFilename(a:use_line) . "' Enter"
-  ExitCopyMode()
+  let system_call = "tmux send-keys -t .+ 'cd " . dir . " && bin/rspec " . TestFilename(a:use_line) . "' Enter"
+  call ExitCopyMode()
   call system(system_call)
 endfunction
 
