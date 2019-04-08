@@ -38,7 +38,7 @@ Then run the following in Vim:
 let g:clear_screen_before_test_run = 1
 
 " The default rspec command is `bundle exec rspec` but can be overwritten with this:
-let g:rspec_command = get(g:, 'rspec_command', 'bundle exec rspec')
+let g:rspec_command = `custom rspec command`
 
 " By default there are no keyboard mappings. Map them like so:
 noremap <Leader>f :RSpecFile<CR>
