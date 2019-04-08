@@ -3,6 +3,7 @@ if exists("g:loaded_vttr") || v:version < 700
 endif
 let g:loaded_vttr = 1
 
+let g:rspec_command = get(g:, 'rspec_command', 'bundle exec rspec')
 let g:clear_screen_before_test_run = get(g:, 'clear_screen_before_test_run', 0)
 "---------------------------------------------------------
 " RSpec Test Runner
@@ -35,7 +36,7 @@ endfunction
 
 function! RspecMe(use_line)
   let dir = CurrentProjectRoot()
-  let system_call = "tmux send-keys -t .+ 'cd " . dir . " && bin/rspec " . TestFilename(a:use_line) . "' Enter"
+  let system_call = "tmux send-keys -t .+ 'cd " . dir . " && " . g:rspec_command . " " . TestFilename(a:use_line) . "' Enter"
   call ExitScrollMode()
   if g:clear_screen_before_test_run
       call ClearScreen()
