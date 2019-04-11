@@ -39,7 +39,7 @@ function! ClearScreenIfNeeded()
 endfunction
 
 function! TestCommand()
-    if !empty(glob(s:project_root_path . '/bin/rspec'))
+    if g:use_spring && !empty(glob(s:project_root_path . '/bin/rspec'))
         return 'bin/rspec'
     else
         return g:rspec_command
