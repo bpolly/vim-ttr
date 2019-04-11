@@ -40,6 +40,9 @@ let g:clear_screen_before_test_run = 1
 " The default rspec command is `bundle exec rspec` but can be overwritten with this:
 let g:rspec_command = `custom rspec command`
 
+" Prefer bin/rspec if it is available:
+let g:use_spring = 1
+
 " By default there are no keyboard mappings. Map them like so:
 noremap <Leader>f :RSpecFile<CR>
 noremap <Leader>l :RSpecLine<CR>
