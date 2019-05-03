@@ -59,4 +59,4 @@ Commands for using vttr:~
 :RSpecLine              Run current RSpec file with focused line.
 
                                                    *vttr-:RSpecFailures*
-:RSpecFailues              Run current RSpec file with failures only.
+:RSpecFailues           Run current RSpec file with failures only.
