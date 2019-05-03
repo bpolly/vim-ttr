@@ -51,6 +51,9 @@ function! TestFilename()
     if s:use_line == 1
         let filename = filename . ":" . line('.')
     endif
+    if s:only_failures == 1
+        let filename = filename . ' --only-failures'
+    endif
     if filename =~? 'spec/features'
         let filename = filename . ' --tag type:feature'
     endif
@@ -62,8 +65,9 @@ function! SendTestCommand()
     call system(system_call)
 endfunction
 
-function! RspecMe(use_line)
+function! RspecMe(use_line, only_failures)
     let s:use_line = a:use_line
+    let s:only_failures = a:only_failures
     if SetFilePaths() == 0 " if the selected file is not valid spec, exit
         echo 'Error: Could not find spec file'
         return
@@ -73,6 +77,7 @@ function! RspecMe(use_line)
     call SendTestCommand()
 endfunction
 
-command! -bar RSpecFile call RspecMe(0)
-command! -bar RSpecLine  call RspecMe(1)
+command! -bar RSpecFile call RspecMe(0,0)
+command! -bar RSpecLine  call RspecMe(1,0)
+command! -bar RSpecFailures call RspecMe(0,1)
 
