@@ -5,7 +5,7 @@ interruption.
                            VTTR (Vim Tmux Test Runner)
 
 
-Author:            Braden Polly 
+Author:            Braden Polly
 Plugin Homepage:   <https://github.com/bpolly/vttr>
 
 
@@ -58,3 +58,5 @@ Commands for using vttr:~
                                                    *vttr-:RSpecLine*
 :RSpecLine              Run current RSpec file with focused line.
 
+                                                   *vttr-:RSpecFailures*
+:RSpecFailues           Run current RSpec file with failures only.

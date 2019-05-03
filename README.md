@@ -46,4 +46,5 @@ let g:use_spring = 1
 " By default there are no keyboard mappings. Map them like so:
 noremap <Leader>f :RSpecFile<CR>
 noremap <Leader>l :RSpecLine<CR>
+noremap <Leader>x :RSpecFailures<CR>
 ```
