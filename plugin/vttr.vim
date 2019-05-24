@@ -63,7 +63,7 @@ endfunction
 
 function! SendTestCommand()
     let system_call = "tmux send-keys -t .+ '"
-    if g:vttr_do_not_change_directories == 1
+    if g:vttr_do_not_change_directories != 1
       let system_call = system_call . "cd " . s:project_root_path . " && "
     endif
     let system_call = system_call . TestCommand() . " " . TestFilename() . "' Enter"
