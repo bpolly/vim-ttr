@@ -9,6 +9,7 @@ let g:loaded_vttr = 1
 let g:rspec_command = get(g:, 'rspec_command', 'bundle exec rspec')
 let g:clear_screen_before_test_run = get(g:, 'clear_screen_before_test_run', 0)
 let g:use_spring = get(g:, 'use_spring', 0)
+let g:vttr_change_directories = get(g:, 'vttr_change_directories', 0)
 
 "---------------------------------------------------------
 " RSpec Test Runner
@@ -61,7 +62,11 @@ function! TestFilename()
 endfunction
 
 function! SendTestCommand()
-    let system_call = "tmux send-keys -t .+ 'cd " . s:project_root_path . " && " . TestCommand() . " " . TestFilename() . "' Enter"
+    let system_call = "tmux send-keys -t .+ '"
+    if g:vttr_change_directories == 1
+      let system_call = system_call . "cd " . s:project_root_path . " && "
+    endif
+    let system_call = system_call . TestCommand() . " " . TestFilename() . "' Enter"
     call system(system_call)
 endfunction
 
