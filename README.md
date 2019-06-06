@@ -43,8 +43,8 @@ let g:rspec_command = `custom rspec command`
 " Prefer bin/rspec if it is available:
 let g:use_spring = 1
 
-" CD into the app's base directory:
-let g:vttr_change_directories = 1
+" cd into the app's base directory before running spec:
+let g:vttr_change_directories = 1 
 
 " By default there are no keyboard mappings. Map them like so:
 noremap <Leader>f :RSpecFile<CR>
