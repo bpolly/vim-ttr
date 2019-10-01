@@ -24,7 +24,7 @@ endfunction
 
 function! SetFilePaths()
     let fullfilename = expand('%:p')
-    let matches = matchlist(fullfilename, '\(.*\)\/\(spec.*\)')
+    let matches = matchlist(fullfilename, '\(.*\)\/\(spec\/.*\)')
     if len(matches) < 3
         return 0
     endif
