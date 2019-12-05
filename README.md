@@ -2,6 +2,10 @@
 
 Run current spec inside adjacent tmux window.
 
+### Demo
+
+https://asciinema.org/a/87H9t5YcD243QtXSwK7n8xsSg/
+
 ## Installation
 
 Install using your favorite package manager, or use Vim's built-in package
