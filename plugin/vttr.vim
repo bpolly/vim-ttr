@@ -26,11 +26,24 @@ function! SetFilePaths()
     let fullfilename = expand('%:p')
     let matches = matchlist(fullfilename, '\(.*\)\/\(spec\/.*\)')
     if len(matches) < 3
+        let accompanyingSpecPath = findAccompanyingSpec()
         return 0
     endif
     let s:project_root_path = matches[1]
     let s:spec_path = matches[2]
     return 1
+endfunction
+
+function! FindAccompanyingSpec(fullfilename)
+    let a:fullfilename = 'app/models/user.rb'
+    let filename_matches = matchlist(a:fullfilename, '.*\/\(.*\).rb')
+    if len(filename_matches) < 2
+        let accompanyingSpecPath = findAccompanyingSpec()
+        return 0
+    endif
+    let filename = filename_matches[1]
+    let newfilename = substitute(fullfilename, '\/\([a-z]*.rb\)', '/' . filename . '_spec.rb', 'g')
+    echo substitute(newfilename, 'app\/', 'spec/', 'g')
 endfunction
 
 function! ClearScreenIfNeeded()
